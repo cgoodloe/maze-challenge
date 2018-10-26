@@ -129,7 +129,7 @@ public class Maze {
      * @param location
      * @return
      */
-    public boolean isEntry(Location location) {
+    public boolean isEntry(final Location location) {
         return this.mazeMap[location.getRow()][location.getColumn()] == MAZE_ENTRY;
     }
 
@@ -150,7 +150,10 @@ public class Maze {
      * @return
      */
     public boolean isValidLocation(final Location location) {
-        return location.getRow() <= this.rows && location.getColumn() <= this.columns;
+        return location.getRow() >= 0 &&
+                location.getRow() < this.rows &&
+                location.getColumn() >= 0 &&
+                location.getColumn() < this.columns;
     }
 
     public Location getEntry() {
