@@ -1,5 +1,8 @@
 package com.challenge.maze.resource;
 
+/**
+ * Response for solved maze
+ */
 public class SolveMazeResponse {
     private String maze;
     private String solvedMaze;

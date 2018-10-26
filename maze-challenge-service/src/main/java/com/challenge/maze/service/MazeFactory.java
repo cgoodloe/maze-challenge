@@ -4,6 +4,9 @@ import com.challenge.maze.model.Location;
 import com.challenge.maze.model.Maze;
 import org.springframework.stereotype.Service;
 
+/**
+ * Factory for converting maze
+ */
 @Service
 public class MazeFactory {
 
@@ -11,6 +14,12 @@ public class MazeFactory {
         //no-op
     }
 
+    /**
+     * Converts maze to a string
+     *
+     * @param maze
+     * @return
+     */
     public String buildMazeString(final Maze maze) {
         String mazeGrid = "";
 

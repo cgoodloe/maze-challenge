@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller for accessing maze service
+ */
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class MazeController {
@@ -21,15 +24,27 @@ public class MazeController {
     final MazeService mazeService;
     final MazeFactory mazeFactory;
 
+    /**
+     * Constructor
+     *
+     * @param mazeService the MazeService
+     * @param mazeFactory the MazeFactory
+     */
     @Autowired
     public MazeController(final MazeService mazeService, final MazeFactory mazeFactory) {
         this.mazeService = mazeService;
         this.mazeFactory = mazeFactory;
     }
 
+    /**
+     * Processes submitted maze and solves it.
+     *
+     * @param mazeRequest the maze to solve
+     * @return SolveMazeResponse
+     */
     @RequestMapping(method = RequestMethod.POST, path = "/maze/solve")
     public SolveMazeResponse solveMaze(@RequestBody final String mazeRequest) {
-        LOGGER.info("Request: {}", mazeRequest);
+        LOGGER.info("Request:\n{}", mazeRequest);
 
         final Maze maze = new Maze(mazeRequest);
         List<Location> path = this.mazeService.solve(maze);

@@ -2,6 +2,9 @@ package com.challenge.maze.resource;
 
 import com.challenge.maze.model.Status;
 
+/**
+ * Response for application status
+ */
 public class StatusResponse {
 
     private final Status status;

@@ -1,5 +1,8 @@
 package com.challenge.maze.model;
 
+/**
+ * Encapsulates maze and adds util functions to a given ASCII maze
+ */
 public class Maze {
     private static final char MAZE_ENTRY = 'A';
     private static final char MAZE_EXIT = 'B';
@@ -13,10 +16,20 @@ public class Maze {
     private Location entry;
     private Location exit;
 
+    /**
+     * Constructor
+     *
+     * @param mazeMapString the maze
+     */
     public Maze(final String mazeMapString) {
         this.initializeMaze(mazeMapString);
     }
 
+    /**
+     * Constructor
+     *
+     * @param maze the maze to copy
+     */
     public Maze(final Maze maze) {
         this.mazeMap = this.copyArray(maze.mazeMap);
         this.rows = maze.rows;
@@ -25,6 +38,12 @@ public class Maze {
         this.exit = new Location(maze.exit);
     }
 
+    /**
+     * Makes copy of an array
+     *
+     * @param originalArray
+     * @return char[][]
+     */
     private char[][] copyArray(final char[][] originalArray) {
         char[][] newArray = new char[originalArray.length][];
         for(int i = 0; i < originalArray.length; i++) {
@@ -37,6 +56,11 @@ public class Maze {
         return newArray;
     }
 
+    /**
+     * Initializes encapsulated maze
+     *
+     * @param mazeMapString the ASCII maze
+     */
     private void initializeMaze(String mazeMapString) {
         final String normalizedEolMazeMap = normalizeLineEndings(mazeMapString);
         final String[] mazeMapRows = normalizedEolMazeMap.split("\n");
@@ -59,31 +83,72 @@ public class Maze {
         }
     }
 
+    /**
+     * Normalizes line endings to only be unix based
+     * ]
+     * @param mazeMapString
+     * @return String
+     */
     private String normalizeLineEndings(final String mazeMapString) {
         return mazeMapString.replaceAll("\\r\\n", "\n")
                             .replaceAll("\\r", "\n");
     }
 
+    /**
+     * Set location in maze as visited
+     *
+     * @param location
+     */
     public void setVisited(final Location location) {
         this.mazeMap[location.getRow()][location.getColumn()] = MAZE_VISITED;
     }
 
+    /**
+     * Check if location in maze is visited
+     *
+     * @param location
+     * @return
+     */
     public boolean isVisited(final Location location) {
         return this.mazeMap[location.getRow()][location.getColumn()] == MAZE_VISITED;
     }
 
+    /**
+     * Check if location in maze is a wall
+     *
+     * @param location
+     * @return
+     */
     public boolean isWall(final Location location) {
         return this.mazeMap[location.getRow()][location.getColumn()] == MAZE_WALL;
     }
 
+    /**
+     * Check if location in maze is the entry
+     *
+     * @param location
+     * @return
+     */
     public boolean isEntry(Location location) {
         return this.mazeMap[location.getRow()][location.getColumn()] == MAZE_ENTRY;
     }
 
+    /**
+     * Check if location in maze is the exit
+     *
+     * @param location
+     * @return
+     */
     public boolean isExit(final Location location) {
         return this.mazeMap[location.getRow()][location.getColumn()] == MAZE_EXIT;
     }
 
+    /**
+     * Check if location in maze is within maze dimensions
+     *
+     * @param location
+     * @return
+     */
     public boolean isValidLocation(final Location location) {
         return location.getRow() <= this.rows && location.getColumn() <= this.columns;
     }
