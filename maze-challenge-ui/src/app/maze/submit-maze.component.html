@@ -1,0 +1,18 @@
+<div>
+  <h3>Enter maze and click submit to see solution!</h3>
+  <form>
+    <div>
+      <textarea type="textarea" style="overflow-x: auto; white-space: nowrap;" rows="20" cols="50" [(ngModel)]="mazeString" placeholder="Enter maze here..." name="maze" class="form-control" id="maze"></textarea>
+    </div>
+
+    <button class="btn btn-success" (click)="submitMaze()">Submit Maze!</button>
+  </form>
+  <br />
+  <br />
+  <div>
+    <ng-container *ngIf="solvedMaze">
+      <p><b>Total steps: </b>{{ steps }}</p>
+      <div class="maze" [innerHTML]="solvedMaze"></div>
+    </ng-container>
+  </div>
+</div>
