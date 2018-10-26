@@ -15,7 +15,7 @@ The following must be installed
    
 Running the services
 ----
-1 Clone the Repository
+1. Clone the Repository
   - git clone https://github.com/cgoodloe/maze-challenge.git
   - cd maze-challenge
 
