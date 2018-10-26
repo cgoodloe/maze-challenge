@@ -15,9 +15,21 @@ The following must be installed
    
 Running the services
 ----
-Clone the Repository
-1. git clone https://github.com/cgoodloe/maze-challenge.git
-2. cd maze-challenge
+1 Clone the Repository
+  - git clone https://github.com/cgoodloe/maze-challenge.git
+  - cd maze-challenge
 
-Build and run maze-challenge-service
-1. ./mvnw clean install
+2. To build and run maze-challenge-service, run the following commands
+  - cd maze-challenge-service 
+  - ./mvnw clean install
+  - java -jar target/maze-challenge-service-0.0.1-SNAPSHOT.jar
+  - curl http://localhost:8080/maze/status
+    - if returned status is {"status":"UP"}, then service running correctly
+
+3. To build and run maze-challenge-ui, run the following commands
+  - cd maze-challenge-ui
+  - npm install
+  - ng serve --proxy-config proxy.config.json
+  - in browser navigate to http://localhost:4200
+  
+  
