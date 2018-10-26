@@ -21,7 +21,7 @@ Running the services
 
 2. To build and run maze-challenge-service, run the following commands
   - cd maze-challenge-service 
-  - ./mvnw clean install
+  - ./mvnw.cmd clean install
   - java -jar target/maze-challenge-service-0.0.1-SNAPSHOT.jar
   - curl http://localhost:8080/maze/status
     - if returned status is {"status":"UP"}, then service running correctly
